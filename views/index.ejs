@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Munch Mysteries</title>
+  </head>
+  <body>
+    <h1>All Munch-Mysteries</h1>
+    <a href="/munches/new">Add New Munch-Mystery</a>
+    <ul>
+      <% for(let munch of munches) {%>
+      <li><a href="/munches/<%= munch._id %>"><%= munch.title %></a></li>
+      <% } %>
+    </ul>
+  </body>
+</html>
