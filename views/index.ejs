@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Munch Mysteries</title>
-  </head>
-  <body>
-    <h1>All Munch-Mysteries</h1>
-    <a href="/munches/new">Add New Munch-Mystery</a>
-    <ul>
-      <% for(let munch of munches) {%>
-      <li><a href="/munches/<%= munch._id %>"><%= munch.title %></a></li>
-      <% } %>
-    </ul>
-  </body>
-</html>
+<% layout('layouts/boilerplate') -%>
+<h1>All Munch-Mysteries</h1>
+<div class="row">
+  <% for(let munch of munches) {%>
+    <div class="col-12 col-md-3">
+      <div class="card my-3" style="width: 18rem;">
+        <img src="https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= munch.title %></h5>
+          <p class="card-text"><%= munch.description %></p>
+          <p class="card-text"><%= munch.location %></p>
+          <a href="/munches/<%= munch._id %>" class="btn btn-primary">View</a>
+        </div>
+      </div>
+    </div>
+<% } %>
+</div>
+

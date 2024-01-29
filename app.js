@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const path = require("path");
 const Place = require("./models/place");
 const methodOverride = require("method-override");
+const engine = require('ejs-mate');
+  
 
 mongoose
   .connect("mongodb://127.0.0.1:27017/Munch-Mysteries")
@@ -14,6 +16,8 @@ mongoose
   });
 
 const app = express();
+
+app.engine('ejs', engine);
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -57,6 +61,10 @@ app.put("/munches/:id", async (req, res) => {
 app.delete("/munches/:id", async (req, res) => {
   const { id } = req.params;
   await Place.findByIdAndDelete(id);
+  res.redirect("/munches");
+});
+
+app.get("/", (req, res) => {
   res.redirect("/munches");
 });
 

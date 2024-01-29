@@ -1,41 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Munches</title>
-  </head>
-  <body>
+<% layout('layouts/boilerplate') -%>
+    <h1>Edit Munch-Mystery</h1>
     <form action="/munches/<%= munch._id %>?_method=PUT" method="POST">
-      <section>
         <label for="title">Title</label>
-        <input
-          type="text"
-          name="place[title]"
-          id="title"
-          value="<%= munch.title %>"
-        />
-      </section>
-      <section>
+        <input type="text" class="form-control" name="place[title]" id="title" value="<%= munch.title %>"/>
+
         <label for="description">Description</label>
-        <input
-          type="text"
-          name="place[description]"
-          id="description"
-          value="<%= munch.description%>"
-        />
-      </section>
-      <section>
+        <input type="text" class="form-control" name="place[description]" id="description" value="<%= munch.description%>" />
+
         <label for="location">Location</label>
-        <input
-          type="text"
-          name="place[location]"
-          id="location"
-          value="<%= munch.location %>"
-        />
-      </section>
-      <button>Submit</button>
+        <input type="text" class="form-control" name="place[location]" id="location" value="<%= munch.location %>"/>
+
+        <button class="btn btn-primary my-2">Submit</button>
     </form>
-    <a href="/munches">Back to All Munch-Mysteries</a>
-  </body>
-</html>
