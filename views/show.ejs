@@ -7,9 +7,9 @@
           <h5 class="card-title"><%= munch.title %></h5>
           <p class="card-text"><%= munch.description %></p>
           <p class="card-text"><%= munch.location %></p>
-          <a href="/munches/<%= munch._id %>/edit" class="btn btn-primary my-1">Edit</a>
+          <a href="/munches/<%= munch._id %>/edit" class="btn btn-info my-1">Edit</a>
           <form action="/munches/<%= munch._id %>?_method=DELETE" method="POST">
-            <button class="btn btn-primary my-1">Delete</button>
+            <button class="btn btn-danger my-1">Delete</button>
           </form>
       </div>
     </div>
