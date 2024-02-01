@@ -38,7 +38,7 @@ const validateMunch = (req, res, next) => {
 };
 
 app.get(
-  "/munches", validateMunch, catchAsync(async (req, res) => {
+  "/munches", catchAsync(async (req, res) => {
     const munches = await Place.find({});
     res.render("index", { munches });
   })
@@ -58,7 +58,7 @@ app.post(
 );
 
 app.get(
-  "/munches/:id", validateMunch,
+  "/munches/:id",
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const munch = await Place.findById(id);
@@ -67,7 +67,7 @@ app.get(
 );
 
 app.get(
-  "/munches/:id/edit", validateMunch,
+  "/munches/:id/edit",
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const munch = await Place.findById(id);
@@ -85,7 +85,7 @@ app.put(
 );
 
 app.delete(
-  "/munches/:id", validateMunch,
+  "/munches/:id",
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Place.findByIdAndDelete(id);

@@ -4,8 +4,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-5 offset-3 border border-secondary">
+                    <label for="imgUrl">Image URL</label>
+                    <input type="text" class="form-control" name="place[imgUrl]" id="imgUrl" value="<%= munch.imgUrl %>" required/>
+                    <div class="valid-feedback">
+                        Perfect!
+                    </div>
+
                     <label for="title">Title</label>
                     <input type="text" class="form-control" name="place[title]" id="title" value="<%= munch.title %>" required/>
+                    <div class="valid-feedback">
+                        Perfect!
+                    </div>
+
+                    <label for="price" class="form-label">Average Price</label>
+                    <input type="number" class="form-control" name="place[averagePrice]" id="price" value="<%= munch.averagePrice %>" required/>
                     <div class="valid-feedback">
                         Perfect!
                     </div>

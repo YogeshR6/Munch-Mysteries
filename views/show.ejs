@@ -2,11 +2,12 @@
 <div class="row">
   <div class="col-6 offset-3">
     <div class="card" style="width: 18rem;">
-      <img src="https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="...">
+      <img src="<%= munch.imgUrl %>" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title"><%= munch.title %></h5>
-          <p class="card-text"><%= munch.description %></p>
-          <p class="card-text"><%= munch.location %></p>
+          <p class="card-text">Average Price: <%= munch.averagePrice %></p>
+          <p class="card-text">Description: <%= munch.description %></p>
+          <p class="card-text">Location: <%= munch.location %></p>
           <a href="/munches/<%= munch._id %>/edit" class="btn btn-info my-1">Edit</a>
           <form action="/munches/<%= munch._id %>?_method=DELETE" method="POST">
             <button class="btn btn-danger my-1">Delete</button>

@@ -12,174 +12,182 @@ mongoose
 
 const seed = [
   {
-    title: "Cozy Coffee House",
-    description:
-      "A charming coffee shop with a relaxed ambiance, serving freshly brewed coffee and homemade pastries.",
-    location: "123 Main Street, Cityville",
+    title: "Cozy Apartment",
+    averagePrice: 1200,
+    description: "A comfortable and modern apartment for rent.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "City Center"
   },
   {
-    title: "Tech Innovators Meetup",
-    description:
-      "An event for tech enthusiasts and innovators to network, share ideas, and collaborate on exciting projects.",
-    location: "Innovation Hub, Tech Park Avenue, Tech City",
+    title: "Spacious House",
+    averagePrice: 2500,
+    description: "A large and inviting house with a beautiful garden.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Suburbia"
   },
   {
-    title: "Fitness Bootcamp",
-    description:
-      "Get in shape with our high-intensity fitness bootcamp. Expert trainers, motivating atmosphere, and real results!",
-    location: "FitZone Gym, 456 Fitness Street, Healthville",
+    title: "Charming Studio",
+    averagePrice: 800,
+    description: "A small and charming studio apartment with a view.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Art District"
   },
   {
-    title: "Artisanal Craft Fair",
-    description:
-      "Explore unique handmade crafts and art pieces from local artisans. Support the community and discover one-of-a-kind treasures.",
-    location: "Community Center, Art Street, Craftsville",
+    title: "Luxury Penthouse",
+    averagePrice: 5000,
+    description: "An extravagant penthouse with breathtaking city views.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Downtown"
   },
   {
-    title: "Nature Photography Workshop",
-    description:
-      "Learn the art of capturing stunning nature photographs. Hands-on experience, tips from professionals, and breathtaking locations.",
-    location: "Green Valley Nature Reserve, Photography Lane, Shuttertown",
+    title: "Rustic Cottage",
+    averagePrice: 1500,
+    description: "A cozy cottage in the countryside with a fireplace.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Rural Retreat"
   },
   {
-    title: "Healthy Cooking Class",
-    description:
-      "Join us for a fun and interactive cooking class focused on preparing delicious and nutritious meals.",
-    location: "Culinary Studio, 789 Culinary Avenue, Foodsville",
+    title: "Modern Loft",
+    averagePrice: 1800,
+    description: "A stylish and contemporary loft apartment for lease.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Tech Hub"
   },
   {
-    title: "Book Club Meeting",
-    description:
-      "Discussing the latest literary masterpiece. Join fellow book lovers for stimulating conversations and shared insights.",
-    location: "Library Lounge, 101 Reading Street, Bookland",
+    title: "Seaside Villa",
+    averagePrice: 3500,
+    description: "A luxurious villa by the beach with stunning ocean views.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Coastal Paradise"
   },
   {
-    title: "DJ Night at The Lounge",
-    description:
-      "Groove to the beats of our resident DJ, enjoy signature cocktails, and dance the night away in a vibrant atmosphere.",
-    location: "The Lounge, 567 Party Lane, Nightlife City",
+    title: "Urban Duplex",
+    averagePrice: 2200,
+    description: "A two-story duplex in the heart of the city.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Metropolis"
   },
   {
-    title: "DIY Home Decor Workshop",
-    description:
-      "Unleash your creativity with a hands-on workshop on creating beautiful and personalized home decor items.",
-    location: "Creative Space, 246 Crafty Corner, Decorville",
+    title: "Mountain Retreat",
+    averagePrice: 2800,
+    description: "A secluded cabin in the mountains for a peaceful getaway.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Alpine Haven"
   },
   {
-    title: "Historical Walking Tour",
-    description:
-      "Explore the rich history of the city with a guided walking tour through its iconic landmarks and hidden gems.",
-    location: "City History Center, 333 Heritage Street, Historica",
+    title: "Historic Mansion",
+    averagePrice: 4500,
+    description: "A grand and historic mansion available for rent.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Heritage District"
   },
   {
-    title: "Yoga in the Park",
-    description:
-      "Connect with nature and rejuvenate your body and mind with a relaxing yoga session in the serene city park.",
-    location: "City Park, Yoga Plaza, Serenity Town",
+    title: "Sunny Bungalow",
+    averagePrice: 1200,
+    description: "A bright and cheerful bungalow with a spacious garden.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Sunshine Suburb"
   },
   {
-    title: "Live Jazz Concert",
-    description:
-      "Immerse yourself in the soulful sounds of live jazz performed by talented musicians. An evening of musical delight awaits!",
-    location: "Jazz Lounge, 789 Melody Avenue, Jazztopia",
+    title: "Industrial Loft",
+    averagePrice: 2000,
+    description: "A loft with an industrial aesthetic and open floor plan.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Warehouse District"
   },
   {
-    title: "Virtual Reality Gaming Tournament",
-    description:
-      "Compete in an exciting virtual reality gaming tournament. Prizes, challenges, and immersive gaming experiences await!",
-    location: "VR Arena, 101 Tech Street, Gamers Haven",
+    title: "Elegant Townhouse",
+    averagePrice: 2800,
+    description: "An elegant townhouse with classic architecture.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Historic Quarter"
   },
   {
-    title: "Community Garden Planting Day",
-    description:
-      "Join hands with neighbors to plant flowers, herbs, and vegetables in our community garden. A day of green initiatives and fun!",
-    location: "Community Garden, Green Thumb Lane, EcoVillage",
+    title: "Lakefront Cottage",
+    averagePrice: 1600,
+    description: "A charming cottage with a view of the tranquil lake.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Lakeside Haven"
   },
   {
-    title: "Language Exchange Meetup",
-    description:
-      "Practice and improve your language skills in a friendly and multicultural environment. Make new friends and learn together!",
-    location: "Language Hub, 222 Polyglot Street, LinguaLand",
+    title: "Cityscape Condo",
+    averagePrice: 1800,
+    description: "A modern condo with panoramic views of the city skyline.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Sky High Living"
   },
   {
-    title: "Science and Innovation Symposium",
-    description:
-      "Explore the latest advancements in science and technology. Engage with experts, attend workshops, and be part of the innovation conversation.",
-    location: "Science Center, 555 Innovation Avenue, SciTech City",
+    title: "Serenity Villa",
+    averagePrice: 3200,
+    description: "A tranquil villa surrounded by lush greenery and peace.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Nature Retreat"
   },
   {
-    title: "Family Movie Night",
-    description:
-      "Bring your blankets and join us for a family-friendly movie night under the stars. Popcorn, snacks, and good times guaranteed!",
-    location: "City Park, Movie Corner, Familyville",
+    title: "Contemporary Duplex",
+    averagePrice: 2400,
+    description: "A sleek and contemporary two-story duplex apartment.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Modern Living"
   },
   {
-    title: "Photography Exhibition Opening",
-    description:
-      "Discover the beauty captured through the lenses of talented photographers. Join us for the grand opening of a captivating photography exhibition.",
-    location: "Art Gallery, 777 Shutter Street, PhotoCity",
+    title: "Beachfront Retreat",
+    averagePrice: 3800,
+    description: "A luxurious retreat right on the sandy shores of the beach.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Oceanfront Paradise"
   },
   {
-    title: "Entrepreneurship Workshop",
-    description:
-      "Gain insights into starting and growing your own business. Learn from successful entrepreneurs and turn your ideas into reality.",
-    location: "Startup Hub, 888 Business Street, Entrepreneurial City",
+    title: "Artistic Loft",
+    averagePrice: 2000,
+    description: "A loft with artistic decor and creative vibes.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Arts District"
   },
   {
-    title: "Acoustic Music Jam Session",
-    description:
-      "Bring your instruments or just your love for music. Join our acoustic jam session and enjoy an evening of musical creativity and collaboration.",
-    location: "Music Cafe, 123 Harmony Lane, Melodyville",
+    title: "Majestic Mansion",
+    averagePrice: 5000,
+    description: "A majestic mansion with opulent interiors and gardens.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Regal Estate"
   },
   {
-    title: "Sustainable Living Seminar",
-    description:
-      "Explore eco-friendly practices and sustainable living. Discover simple steps to make a positive impact on the environment.",
-    location: "Green Living Center, 444 Eco Street, Sustainia",
+    title: "Countryside Cabin",
+    averagePrice: 1400,
+    description: "A charming cabin nestled in the peaceful countryside.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Rural Getaway"
   },
   {
-    title: "Charity Run for Education",
-    description:
-      "Participate in a charity run to support education initiatives. Lace up your shoes, make a difference, and enjoy a day of fitness and giving back.",
-    location: "City Park, Charity Lane, EduRun City",
+    title: "Skyline Penthouse",
+    averagePrice: 4500,
+    description: "A penthouse with breathtaking views of the city skyline.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "High-rise Living"
   },
   {
-    title: "Board Game Night",
-    description:
-      "Bring your favorite board games or try out new ones. Join us for a night of strategy, competition, and board game fun!",
-    location: "Game Lounge, 999 Strategy Street, Boardtopolis",
+    title: "Peaceful Cottage",
+    averagePrice: 1600,
+    description: "A peaceful cottage surrounded by nature and tranquility.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Serene Haven"
   },
   {
-    title: "Flea Market Extravaganza",
-    description:
-      "Explore a variety of treasures and unique finds at our flea market. From vintage goods to handmade crafts, there's something for everyone.",
-    location: "Flea Market Grounds, 666 Bargain Avenue, Treasuresville",
+    title: "City Center Condo",
+    averagePrice: 2000,
+    description: "A condo in the bustling heart of the city with all amenities.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Central Hub"
   },
   {
-    title: "Wellness Retreat Weekend",
-    description:
-      "Escape the hustle and bustle. Join us for a rejuvenating wellness retreat weekend filled with yoga, meditation, and healthy living workshops.",
-    location: "Wellness Resort, 345 Serene Street, Relaxation Haven",
-  },
-  {
-    title: "Comedy Night at The Jester's Den",
-    description:
-      "Laugh out loud with hilarious stand-up comedians. Enjoy a night of comedy, good company, and lots of laughter.",
-    location: "The Jester's Den, 456 Humor Lane, Laughtertown",
-  },
-  {
-    title: "Gardening Workshop for Beginners",
-    description:
-      "Discover the joys of gardening! Join our workshop for beginners and learn the basics of planting, watering, and nurturing your own garden.",
-    location: "Green Thumb Center, 777 Garden Street, Bloomville",
-  },
-  {
-    title: "Mindfulness Meditation Class",
-    description:
-      "Find peace and balance in our mindfulness meditation class. Learn techniques to calm the mind and cultivate a sense of inner tranquility.",
-    location: "Mindful Oasis, 888 Zen Street, Calmington",
-  },
-];
+    title: "Treehouse Retreat",
+    averagePrice: 1200,
+    description: "A unique and charming treehouse for a one-of-a-kind stay.",
+    imgUrl: "https://images.unsplash.com/photo-1507584359040-f44a16355689?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    location: "Forest Haven"
+  }
+]
+;
 
 const seedDB = async () => {
   await Place.deleteMany({});
