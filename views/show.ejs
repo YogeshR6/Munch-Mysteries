@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') -%>
-<div class="row">
-  <div class="col-6 offset-3">
-    <div class="card" style="width: 18rem;">
+<div class="row border p-3 border-secondary">
+  <div class="col-6">
+    <div class="card">
       <img src="<%= munch.imgUrl %>" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title"><%= munch.title %></h5>
@@ -12,7 +12,41 @@
           <form action="/munches/<%= munch._id %>?_method=DELETE" method="POST">
             <button class="btn btn-danger my-1">Delete</button>
           </form>
+        </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <h1>Leave a Review</h1>
+    <form action="/munches/<%= munch._id %>/reviews" method="POST" class="needs-validation" novalidate>
+      <div class="mb-3">
+        <label for="body" class="form-label">Review:</label>
+        <textarea type="text" class="form-control" name="review[body]" id="body" required></textarea>
+        <div class="valid-feedback">
+          Perfect!
+        </div>
       </div>
+      <div class="mb-3">
+        <label for="rating" class="form-label">Rating</label>
+        <input type="range" class="form-range" min="1" max="5" id="rating" name="review[rating]" required>
+        <div class="valid-feedback">
+          Perfect!
+        </div>        
+      </div>
+      <button class="btn btn-success mb-2">Sumbit</button>
+    </form>
+    <div class="m-3">
+      <h2>Reviews</h2>
+      <% munch.reviews.forEach(function(review) { %>
+        <div class="card m-2">
+          <div class="card-body">
+            <h5 class="card-title">Rating: <%= review.rating %></h5>
+            <p class="card-text">Review: <%= review.body %></p>
+          </div>
+          <form action="/munches/<%= munch._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-sm btn-danger m-2">Delete</button>
+          </form>
+        </div>
+      <% }) %>
     </div>
   </div>
 </div>

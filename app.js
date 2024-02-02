@@ -2,9 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const Place = require("./models/place");
+const Review = require("./models/review");
 const methodOverride = require("method-override");
 const engine = require("ejs-mate");
-const { munchSchema } = require("./joischema.js");
+const { munchSchema, reviewSchema } = require("./joischema.js");
 const catchAsync = require("./utils/catchAsync.js");
 const expressError = require("./utils/expressError.js");
 
@@ -37,6 +38,16 @@ const validateMunch = (req, res, next) => {
   }
 };
 
+const validateReview = (req, res, next) => {
+  const { error } = reviewSchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map(el => el.message).join(",");
+    throw new expressError(msg, 400);
+  } else {
+    next();
+  }
+};
+
 app.get(
   "/munches", catchAsync(async (req, res) => {
     const munches = await Place.find({});
@@ -61,7 +72,7 @@ app.get(
   "/munches/:id",
   catchAsync(async (req, res) => {
     const { id } = req.params;
-    const munch = await Place.findById(id);
+    const munch = await Place.findById(id).populate("reviews");
     res.render("show", { munch });
   })
 );
@@ -92,6 +103,22 @@ app.delete(
     res.redirect("/munches");
   })
 );
+
+app.post("/munches/:id/reviews", validateReview, catchAsync(async (req, res) => {
+  const place = await Place.findById(req.params.id);
+  const review = new Review(req.body.review);
+  place.reviews.push(review);
+  await review.save();
+  await place.save();
+  res.redirect(`/munches/${place._id}`);
+}));
+
+app.delete("/munches/:id/reviews/:reviewId", catchAsync(async (req, res) => {
+  const { id, reviewId } = req.params;
+  await Place.findByIdAndUpdate(id, { $pull: { reviews: reviewId }});
+  await Review.findByIdAndDelete(reviewId);
+  res.redirect(`/munches/${id}`);
+}));
 
 app.get("/", (req, res) => {
   res.redirect("/munches");
