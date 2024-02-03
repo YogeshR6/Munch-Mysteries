@@ -1,13 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
-const Place = require("./models/place");
-const Review = require("./models/review");
 const methodOverride = require("method-override");
 const engine = require("ejs-mate");
-const { munchSchema, reviewSchema } = require("./joischema.js");
-const catchAsync = require("./utils/catchAsync.js");
 const expressError = require("./utils/expressError.js");
+const munches = require("./routers/munches.js");
+const reviews = require("./routers/reviews.js");
 
 mongoose
   .connect("mongodb://127.0.0.1:27017/Munch-Mysteries")
@@ -27,101 +25,12 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
-
-const validateMunch = (req, res, next) => {
-  const { error } = munchSchema.validate(req.body);
-  if (error) {
-    const msg = error.details.map(el => el.message).join(",");
-    throw new expressError(msg, 400);
-  } else {
-    next();
-  }
-};
-
-const validateReview = (req, res, next) => {
-  const { error } = reviewSchema.validate(req.body);
-  if (error) {
-    const msg = error.details.map(el => el.message).join(",");
-    throw new expressError(msg, 400);
-  } else {
-    next();
-  }
-};
-
-app.get(
-  "/munches", catchAsync(async (req, res) => {
-    const munches = await Place.find({});
-    res.render("index", { munches });
-  })
-);
-
-app.get("/munches/new", (req, res) => {
-  res.render("new");
-});
-
-app.post(
-  "/munches", validateMunch,
-  catchAsync(async (req, res) => {
-    const place = new Place(req.body.place);
-    await place.save();
-    res.redirect("/munches");
-  })
-);
-
-app.get(
-  "/munches/:id",
-  catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const munch = await Place.findById(id).populate("reviews");
-    res.render("show", { munch });
-  })
-);
-
-app.get(
-  "/munches/:id/edit",
-  catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const munch = await Place.findById(id);
-    res.render("edit", { munch });
-  })
-);
-
-app.put(
-  "/munches/:id", validateMunch,
-  catchAsync(async (req, res) => {
-    const { id } = req.params;
-    await Place.findByIdAndUpdate(id, { ...req.body.place });
-    res.redirect(`/munches/${id}`);
-  })
-);
-
-app.delete(
-  "/munches/:id",
-  catchAsync(async (req, res) => {
-    const { id } = req.params;
-    await Place.findByIdAndDelete(id);
-    res.redirect("/munches");
-  })
-);
-
-app.post("/munches/:id/reviews", validateReview, catchAsync(async (req, res) => {
-  const place = await Place.findById(req.params.id);
-  const review = new Review(req.body.review);
-  place.reviews.push(review);
-  await review.save();
-  await place.save();
-  res.redirect(`/munches/${place._id}`);
-}));
-
-app.delete("/munches/:id/reviews/:reviewId", catchAsync(async (req, res) => {
-  const { id, reviewId } = req.params;
-  await Place.findByIdAndUpdate(id, { $pull: { reviews: reviewId }});
-  await Review.findByIdAndDelete(reviewId);
-  res.redirect(`/munches/${id}`);
-}));
+app.use(express.static(path.join(__dirname, "public")));
+app.use("/munches", munches)
+app.use("/munches/:id/reviews", reviews)
 
 app.get("/", (req, res) => {
-  res.redirect("/munches");
+  res.render("home");
 });
 
 app.all("*", (req, res, next) => {
