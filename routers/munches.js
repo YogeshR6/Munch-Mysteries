@@ -28,6 +28,7 @@ router.get("/", catchAsync(async (req, res) => {
  router.post("/", validateMunch, catchAsync(async (req, res) => {
       const place = new Place(req.body.place);
       await place.save();
+      req.flash("success", "Munch Mystery Created!");
       res.redirect("/munches");
     })
   );
@@ -49,6 +50,7 @@ router.get("/", catchAsync(async (req, res) => {
  router.put("/:id", validateMunch, catchAsync(async (req, res) => {
       const { id } = req.params;
       await Place.findByIdAndUpdate(id, { ...req.body.place });
+      req.flash("success", "Munch Mystery Updated!");
       res.redirect(`/munches/${id}`);
     })
   );
@@ -56,6 +58,7 @@ router.get("/", catchAsync(async (req, res) => {
  router.delete("/:id", catchAsync(async (req, res) => {
       const { id } = req.params;
       await Place.findByIdAndDelete(id);
+      req.flash("success", "Successfully deleted Munch Mystery!");
       res.redirect("/munches");
     })
   );
