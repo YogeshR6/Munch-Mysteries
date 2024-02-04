@@ -2,19 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Place = require('../models/place');
 const catchAsync = require('../utils/catchAsync');
-const expressError = require('../utils/expressError');
-const { munchSchema } = require('../joischema.js');
-const { isLoggedIn } = require('../middleware');
-
-const validateMunch = (req, res, next) => {
-  const { error } = munchSchema.validate(req.body);
-  if (error) {
-    const msg = error.details.map(el => el.message).join(',');
-    throw new expressError(msg, 400);
-  } else {
-    next();
-  }
-};
+const { isLoggedIn, validateMunch, isAuthor } = require('../middleware');
 
 router.get("/", catchAsync(async (req, res) => {
       const munches = await Place.find({});
@@ -28,6 +16,7 @@ router.get("/", catchAsync(async (req, res) => {
   
  router.post("/", isLoggedIn, validateMunch, catchAsync(async (req, res) => {
       const place = new Place(req.body.place);
+      place.author = req.user._id;
       await place.save();
       req.flash("success", "Munch Mystery Created!");
       res.redirect("/munches");
@@ -36,19 +25,19 @@ router.get("/", catchAsync(async (req, res) => {
   
  router.get("/:id", catchAsync(async (req, res) => {
       const { id } = req.params;
-      const munch = await Place.findById(id).populate("reviews");
+      const munch = await Place.findById(id).populate({path: "reviews", populate: {path: "author"}}).populate("author");
       res.render("show", { munch });
     })
   );
   
- router.get("/:id/edit", isLoggedIn, catchAsync(async (req, res) => {
+ router.get("/:id/edit", isLoggedIn, isAuthor, catchAsync(async (req, res) => {
       const { id } = req.params;
       const munch = await Place.findById(id);
       res.render("edit", { munch });
     })
   );
   
- router.put("/:id", isLoggedIn, validateMunch, catchAsync(async (req, res) => {
+ router.put("/:id", isLoggedIn, isAuthor, validateMunch, catchAsync(async (req, res) => {
       const { id } = req.params;
       await Place.findByIdAndUpdate(id, { ...req.body.place });
       req.flash("success", "Munch Mystery Updated!");
@@ -56,7 +45,7 @@ router.get("/", catchAsync(async (req, res) => {
     })
   );
   
- router.delete("/:id", isLoggedIn, catchAsync(async (req, res) => {
+ router.delete("/:id", isLoggedIn, isAuthor, catchAsync(async (req, res) => {
       const { id } = req.params;
       await Place.findByIdAndDelete(id);
       req.flash("success", "Successfully deleted Munch Mystery!");

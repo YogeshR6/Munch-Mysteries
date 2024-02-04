@@ -63,18 +63,12 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use((req, res, next) => {
-  res.locals.success = req.flash("success");
-  res.locals.error = req.flash("error");
-  next();
-});
-
 app.use("/", users)
 app.use("/munches", munches)
 app.use("/munches/:id/reviews", reviews)
 
 app.get("/", (req, res) => {
-  res.render("home");
+  res.send("Hello from Munch Mysteries!");
 });
 
 app.all("*", (req, res, next) => {
