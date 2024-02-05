@@ -1,3 +1,4 @@
+const { cloudinary } = require("../cloudinary");
 const Place = require('../models/place');
 
 module.exports.index = async (req, res) => {
@@ -40,7 +41,7 @@ module.exports.updateMunch = async (req, res) => {
         for (let filename of req.body.deleteImages) {
             await cloudinary.uploader.destroy(filename);
         }
-        await campground.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } })
+        await place.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } })
     }
     req.flash("success", "Munch Mystery Updated!");
     res.redirect(`/munches/${id}`);

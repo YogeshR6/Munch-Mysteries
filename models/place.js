@@ -1,3 +1,4 @@
+const { cloudinary } = require("../cloudinary");
 const mongoose = require("mongoose");
 const Review = require("./review");
 const Schema = mongoose.Schema;
@@ -36,6 +37,9 @@ placeSchema.post("findOneAndDelete", async function (doc) {
         $in: doc.reviews
       }
     });
+    for (let img of doc.images) {
+      await cloudinary.uploader.destroy(img.filename);
+    }
   }
 });
 
