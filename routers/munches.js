@@ -15,7 +15,7 @@ router.get("/new", isLoggedIn, munches.renderNewForm);
   
 router.route("/:id")
     .get(catchAsync(munches.showMunch))
-    .put(isLoggedIn, isAuthor, validateMunch, catchAsync(munches.updateMunch))
+    .put(isLoggedIn, isAuthor, upload.array('image'), validateMunch, catchAsync(munches.updateMunch))
     .delete(isLoggedIn, isAuthor, catchAsync(munches.deleteMunch));  
 
 router.get("/:id/edit", isLoggedIn, isAuthor, catchAsync(munches.renderEditForm));
