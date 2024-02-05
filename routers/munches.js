@@ -3,10 +3,13 @@ const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
 const { isLoggedIn, validateMunch, isAuthor } = require('../middleware');
 const munches = require('../controllers/munches');
+const multer  = require('multer');
+const { storage } = require('../cloudinary');
+const upload = multer({ storage });
 
 router.route("/")
     .get(catchAsync(munches.index))
-    .post( isLoggedIn, validateMunch, catchAsync(munches.createMunch));
+    .post( isLoggedIn, upload.array('image'), validateMunch, catchAsync(munches.createMunch));
 
 router.get("/new", isLoggedIn, munches.renderNewForm);
   

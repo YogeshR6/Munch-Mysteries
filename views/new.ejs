@@ -1,41 +1,48 @@
 <% layout('layouts/boilerplate') -%>
     
-    <form action="/munches" method="POST" class="needs-validation" novalidate>
+    <form action="/munches" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
         <div class="container">
             <div class="row">
                 <div class="col-5 offset-3 border border-secondary">
                     <h1>New Munch-Mystery</h1>
-                    <label for="imgUrl" class="form-label">Image URL</label>
-                    <input type="text" class="form-control" name="place[imgUrl]" id="imgUrl" required/>
-                    <div class="valid-feedback">
-                        Perfect!
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" name="place[title]" id="title" required/>
+                        <div class="valid-feedback">
+                            Perfect!
+                        </div>
                     </div>
-
-                    <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" name="place[title]" id="title" required/>
-                    <div class="valid-feedback">
-                        Perfect!
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Average Price</label>
+                        <input type="number" class="form-control" name="place[averagePrice]" id="price" required/>
+                        <div class="valid-feedback">
+                            Perfect!
+                        </div>
                     </div>
-
-                    <label for="price" class="form-label">Average Price</label>
-                    <input type="number" class="form-control" name="place[averagePrice]" id="price" required/>
-                    <div class="valid-feedback">
-                        Perfect!
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea type="text" class="form-control" name="place[description]" id="description" required></textarea>
+                        <div class="valid-feedback">
+                            Perfect!
+                        </div>
                     </div>
-
-                    <label for="description" class="form-label">Description</label>
-                    <textarea type="text" class="form-control" name="place[description]" id="description" required></textarea>
-                    <div class="valid-feedback">
-                        Perfect!
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" class="form-control" name="place[location]" id="location" required/>
+                        <div class="valid-feedback">
+                            Perfect!
+                        </div>
                     </div>
-
-                    <label for="location" class="form-label">Location</label>
-                    <input type="text" class="form-control" name="place[location]" id="location" required/>
-                    <div class="valid-feedback">
-                        Perfect!
+                    <div class="mb-3">
+                        <div class="form-file ">
+                            <input type="file" class="form-file-input" id="image" name="image" multiple>
+                            <label class="form-file-label" for="image">
+                            <span class="form-file-text custom-file-label">Choose image(s)...</span>
+                            <span class="form-file-button">Browse</span>
+                            </label>
+                        </div>
                     </div>
-
-                    <button class="btn btn-success my-2">Submit</button>
+                    <button class="btn btn-success my-2">Add Campground</button>
                 </div>
             </div>
         </div>

@@ -9,8 +9,9 @@ module.exports.renderNewForm = (req, res) => {
     res.render("new");
 }
 
-module.exports.createMunch = async (req, res) => {
+module.exports.createMunch = async (req, res, next) => {
     const place = new Place(req.body.place);
+    place.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
     place.author = req.user._id;
     await place.save();
     req.flash("success", "Munch Mystery Created!");
@@ -31,7 +32,16 @@ module.exports.renderEditForm = async (req, res) => {
 
 module.exports.updateMunch = async (req, res) => {
     const { id } = req.params;
-    await Place.findByIdAndUpdate(id, { ...req.body.place });
+    const place = await Place.findByIdAndUpdate(id, { ...req.body.place });
+    const imgs = req.files.map(f => ({ url: f.path, filename: f.filename }));
+    place.images.push(...imgs);
+    await place.save();
+    if (req.body.deleteImages) {
+        for (let filename of req.body.deleteImages) {
+            await cloudinary.uploader.destroy(filename);
+        }
+        await campground.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } })
+    }
     req.flash("success", "Munch Mystery Updated!");
     res.redirect(`/munches/${id}`);
 }
