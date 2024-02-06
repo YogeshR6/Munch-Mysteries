@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+
+body{
+    background-image: url('../imgs/cafe-bg.jpg');
+    background-size: cover;
+}
+
+.navbar{
+    font-size: large;
+    color: #ffffff;
+}
+
+.bg-body-tertiary{
+    --bs-bg-opacity: 0.75;
+}
+
+.navbar-brand{
+    font-weight: bold;
+}
+
+.nav-link{
+    color: #ffffff;
+    border-bottom: 3px solid transparent;
+}
+
+.nav-link:hover{
+    color: #ffffff;
+    border-bottom: 3px solid #ffffff;
+}
+
+.home-content{
+    height: 80vh;
+}
+
+.home-content-text{
+    text-align: center;
+    color: #ffffff;
+    font-family: lilita one;
+    font-size: larger;
+}
+
+.exp-btn{
+    color: #ffffff;
+    border: 2px solid white;
+    font-size: large;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.exp-btn:hover{
+    background-color: #ffffff;
+    color: #000000;
+}

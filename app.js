@@ -79,7 +79,7 @@ app.use("/places", places)
 app.use("/places/:id/reviews", reviews)
 
 app.get("/", (req, res) => {
-  res.send("Hello from Munch Mysteries!");
+  res.render("home");
 });
 
 app.all("*", (req, res, next) => {
