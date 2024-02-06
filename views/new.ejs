@@ -1,10 +1,10 @@
 <% layout('layouts/boilerplate') -%>
     
-    <form action="/munches" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
+    <form action="/places" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
         <div class="container">
             <div class="row">
                 <div class="col-5 offset-3 border border-secondary">
-                    <h1>New Munch-Mystery</h1>
+                    <h1>New Food Place</h1>
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
                         <input type="text" class="form-control" name="place[title]" id="title" required/>
@@ -41,7 +41,7 @@
                             </label>
                         </div>
                     </div>
-                    <button class="btn btn-success my-2">Add Munch Munch-Mystery</button>
+                    <button class="btn btn-success my-2">Add Food Place</button>
                 </div>
             </div>
         </div>

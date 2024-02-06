@@ -1,7 +1,7 @@
-const Munch = require('./models/place');
+const Place = require('./models/place');
 const Review = require('./models/review');
 const expressError = require('./utils/expressError');
-const { munchSchema } = require('./joischema.js');
+const { placeSchema } = require('./joischema.js');
 const { reviewSchema } = require("./joischema.js");
 
 module.exports.isLoggedIn = (req, res, next) => {
@@ -13,8 +13,8 @@ module.exports.isLoggedIn = (req, res, next) => {
     next();
 }
 
-module.exports.validateMunch = (req, res, next) => {
-    const { error } = munchSchema.validate(req.body);
+module.exports.validatePlace = (req, res, next) => {
+    const { error } = placeSchema.validate(req.body);
     if (error) {
       const msg = error.details.map(el => el.message).join(',');
       throw new expressError(msg, 400);
@@ -25,10 +25,10 @@ module.exports.validateMunch = (req, res, next) => {
 
 module.exports.isAuthor = async (req, res, next) => {
     const { id } = req.params;
-    const place = await Munch.findById(id);
+    const place = await Place.findById(id);
     if (!place.author.equals(req.user._id)) {
         req.flash('error', 'You do not have permission to do that!');
-        return res.redirect(`/munches/${id}`);
+        return res.redirect(`/places/${id}`);
     }
     next();
 };
@@ -38,7 +38,7 @@ module.exports.isReviewAuthor = async (req, res, next) => {
     const review = await Review.findById(reviewId);
     if (!review.author.equals(req.user._id)) {
         req.flash('error', 'You do not have permission to do that!');
-        return res.redirect(`/munches/${id}`);
+        return res.redirect(`/places/${id}`);
     }
     next();
 };

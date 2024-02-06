@@ -1,33 +1,33 @@
 <% layout('layouts/boilerplate') -%>
-    <h1>Edit Munch-Mystery</h1>
-    <form action="/munches/<%= munch._id %>?_method=PUT" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
+    <h1>Edit Food Place</h1>
+    <form action="/places/<%= place._id %>?_method=PUT" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
         <div class="container">
             <div class="row">
                 <div class="col-5 offset-3 border border-secondary">
                     <div class="mb-3">
                         <label for="title">Title</label>
-                        <input type="text" class="form-control" name="place[title]" id="title" value="<%= munch.title %>" required/>
+                        <input type="text" class="form-control" name="place[title]" id="title" value="<%= place.title %>" required/>
                         <div class="valid-feedback">
                             Perfect!
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="price" class="form-label">Average Price</label>
-                        <input type="number" class="form-control" name="place[averagePrice]" id="price" value="<%= munch.averagePrice %>" required/>
+                        <input type="number" class="form-control" name="place[averagePrice]" id="price" value="<%= place.averagePrice %>" required/>
                         <div class="valid-feedback">
                             Perfect!
                         </div>
                     </div>
                     <div class="mb-3">       
                         <label for="description">Description</label>
-                        <textarea type="text" class="form-control" name="place[description]" id="description" required><%= munch.description%></textarea>
+                        <textarea type="text" class="form-control" name="place[description]" id="description" required><%= place.description%></textarea>
                         <div class="valid-feedback">
                             Perfect!
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="location">Location</label>
-                        <input type="text" class="form-control" name="place[location]" id="location" value="<%= munch.location %>" required/>
+                        <input type="text" class="form-control" name="place[location]" id="location" value="<%= place.location %>" required/>
                         <div class="valid-feedback">
                             Perfect!
                         </div>
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <% munch.images.forEach(function(img, i) {  %>
+                        <% place.images.forEach(function(img, i) {  %>
                         <img src="<%=img.thumbnail %>" class="img-thumbnail" alt="">
                         <div class="form-check-inline">
                             <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
@@ -49,7 +49,7 @@
                         <label for="image-<%=i%>">Delete?</label>
                         <% })%>
                     </div>
-                    <button class="btn btn-success my-2">Update Munch-Mystery</button>
+                    <button class="btn btn-success my-2">Update Food Place</button>
                 </div>
             </div>
         </div>

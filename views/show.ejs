@@ -4,14 +4,14 @@
     <div class="card">
       <div id="carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <% munch.images.forEach((img, i) => {  %>
+            <% place.images.forEach((img, i) => {  %>
             <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
                 <img src="<%= img.url%>" class="d-block w-100" alt="">
             </div>
             <% }) %>
 
         </div>
-        <% if(munch.images.length > 1) {%>
+        <% if(place.images.length > 1) {%>
           <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -23,14 +23,14 @@
         <% } %>
         </div>
         <div class="card-body">
-          <h5 class="card-title"><%= munch.title %></h5>
-          <p class="card-text">Average Price: <%= munch.averagePrice %></p>
-          <p class="card-text">Description: <%= munch.description %></p>
-          <p class="card-text">Submitted by: <%= munch.author.username %></p>
-          <p class="card-text">Location: <%= munch.location %></p>
-          <% if( currentUser && munch.author.equals(currentUser._id)) {%>
-          <a href="/munches/<%= munch._id %>/edit" class="btn btn-info my-1">Edit</a>
-          <form action="/munches/<%= munch._id %>?_method=DELETE" method="POST">
+          <h5 class="card-title"><%= place.title %></h5>
+          <p class="card-text">Average Price: <%= place.averagePrice %></p>
+          <p class="card-text">Description: <%= place.description %></p>
+          <p class="card-text">Submitted by: <%= place.author.username %></p>
+          <p class="card-text">Location: <%= place.location %></p>
+          <% if( currentUser && place.author.equals(currentUser._id)) {%>
+          <a href="/places/<%= place._id %>/edit" class="btn btn-info my-1">Edit</a>
+          <form action="/places/<%= place._id %>?_method=DELETE" method="POST">
             <button class="btn btn-danger my-1">Delete</button>
           <% } %>
           </form>
@@ -40,7 +40,7 @@
   <div class="col-6">
     <% if(currentUser) {%>
       <h1>Leave a Review</h1>
-    <form action="/munches/<%= munch._id %>/reviews" method="POST" class="needs-validation" novalidate>
+    <form action="/places/<%= place._id %>/reviews" method="POST" class="needs-validation" novalidate>
       <div class="mb-3">
         <fieldset class="starability-basic">
           <legend>Rating:</legend>
@@ -69,7 +69,7 @@
     <% } %>
     <div class="m-3">
       <h2>Reviews</h2>
-      <% munch.reviews.forEach(function(review) { %>
+      <% place.reviews.forEach(function(review) { %>
         <div class="card m-2">
           <div class="card-body">
             <h3><%= review.author.username %></h3>
@@ -79,7 +79,7 @@
             <h5 class="card-text">Review: <%= review.body %></h5>
           </div>
           <% if( currentUser && review.author.equals(currentUser._id)) { %>
-          <form action="/munches/<%= munch._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+          <form action="/places/<%= place._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
             <button class="btn btn-sm btn-danger m-2">Delete</button>
           </form>
           <% } %>

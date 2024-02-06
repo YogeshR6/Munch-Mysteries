@@ -11,12 +11,14 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+const helmet = require("helmet");
+const mongoSanitize = require("express-mongo-sanitize");
 
 const expressError = require("./utils/expressError.js");
 
 const User = require("./models/user.js");
 
-const munches = require("./routers/munches.js");
+const places = require("./routers/places.js");
 const users = require("./routers/users.js");
 const reviews = require("./routers/reviews.js");
 
@@ -38,6 +40,9 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(mongoSanitize({
+  replaceWith: '_'
+}))
 
 const sessionConfig = {
   secret: "thisshouldbeabettersecret!",
@@ -45,6 +50,7 @@ const sessionConfig = {
   saveUninitialized: true,
   cookie: {
     httpOnly: true,
+    // secure: true,
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
     maxAge: 1000 * 60 * 60 * 24 * 7,
   },
@@ -52,6 +58,7 @@ const sessionConfig = {
 
 app.use(session(sessionConfig));
 app.use(flash());
+app.use(helmet({contentSecurityPolicy: false}));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -68,8 +75,8 @@ app.use((req, res, next) => {
 })
 
 app.use("/", users)
-app.use("/munches", munches)
-app.use("/munches/:id/reviews", reviews)
+app.use("/places", places)
+app.use("/places/:id/reviews", reviews)
 
 app.get("/", (req, res) => {
   res.send("Hello from Munch Mysteries!");
