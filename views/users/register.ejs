@@ -1,26 +1,32 @@
 <% layout('layouts/boilerplate')%>
-<h1>Register</h1>
 <form action="/register" method="POST" class="needs-validation" novalidate>
-    <div class="mb-3">
+    <div class="container login-container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-6 p-5 login-col">
+            <h1 class="login-h1 text-center">Register</h1>
+            <div class="mb-3">
         <label class="form-label" for="username">Username</label>
         <input class="form-control" type="text" id="username" name="username" required>
         <div class="valid-feedback">
             Perfect!
         </div>
-    </div>
-    <div class="mb-3">
+            </div>
+            <div class="mb-3">
         <label class="form-label" for="email">Email</label>
         <input class="form-control" type="email" id="email" name="email" required>
         <div class="valid-feedback">
             Perfect!
         </div>
-    </div>
-    <div class="mb-3">
+            </div>
+            <div class="mb-3">
         <label class="form-label" for="password">Password</label>
         <input class="form-control" type="password" id="password" name="password" required>
         <div class="valid-feedback">
             Perfect!
         </div>
+            </div>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary btn-lg login-btn">Register</button>
+            </div>
     </div>
-    <button class="btn btn-success">Register</button>
 </form>

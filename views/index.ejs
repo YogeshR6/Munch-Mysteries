@@ -3,7 +3,7 @@
 <div class="row">
   <% for(let place of places) {%>
     <div class="col-12">
-      <div class="card mb-3">
+      <div class="card index-card mb-3">
         <div class="row g-0">
           <div class="col-md-4">
             <img class="img-fluid" alt="" src="<%=place.images[0].url%>">
@@ -11,10 +11,10 @@
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title"><%= place.title %></h5>
-              <p class="card-text">Average Price: <%= place.averagePrice %></p>
-              <p class="card-text">Description: <%= place.description %></p>
-              <p class="card-text">Location: <%= place.location %></p>
-              <a href="/places/<%= place._id %>" class="btn btn-primary btn-block">View</a>
+              <p class="card-txt mb-2">Average Price: <%= place.averagePrice %></p>
+              <p class="card-txt mb-2">Description: <%= place.description %></p>
+              <p class="card-txt mb-2">Location: <%= place.location %></p>
+              <a href="/places/<%= place._id %>" class="btn btn-primary mt-4">View</a>
             </div>
           </div>
         </div>

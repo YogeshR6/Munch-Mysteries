@@ -13,6 +13,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
+const mongoStore = require("connect-mongo");
 
 const expressError = require("./utils/expressError.js");
 
@@ -21,9 +22,10 @@ const User = require("./models/user.js");
 const places = require("./routers/places.js");
 const users = require("./routers/users.js");
 const reviews = require("./routers/reviews.js");
+const dbURL = process.env.DB_URL || "mongodb://127.0.0.1:27017/Munch-Mysteries";
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/Munch-Mysteries")
+  .connect(dbURL)
   .then(() => {
     console.log("Connected to MongoDB...");
   })
@@ -42,10 +44,16 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(mongoSanitize({
   replaceWith: '_'
-}))
+}));
+
+const secret = process.env.SECRET || "thisshouldbeabettersecret!";
 
 const sessionConfig = {
-  secret: "thisshouldbeabettersecret!",
+  secret,
+  store: mongoStore.create({
+    mongoUrl: dbURL,
+    touchAfter: 24 * 60 * 60
+  }),
   resave: false,
   saveUninitialized: true,
   cookie: {

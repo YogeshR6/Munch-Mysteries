@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
+body{
+    width: 100%;
+}
+
 .navbar{
     font-size: large;
     color: #ffffff;
+    background-color: #1d293f !important;
 }
 
 .navbar-brand{
@@ -25,3 +30,38 @@
     font-weight: bold;
 }
 
+.index-card{
+    color: #ffffff;
+    background-color: #2a3b5a;
+}
+
+.login-container{
+    transform: translateY(20%);
+}
+
+.login-col{
+    color: #ffffff;
+    background-color: #2a3b5a;
+    border-radius: 20%;
+    font-size: large;
+}
+
+.login-h1{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .login-col{
+        font-size: small;
+        padding: 3% !important;
+        border-radius: 5%;
+    }
+    .login-h1{
+        font-size: 1.5rem;
+    }
+    .login-btn{
+        --bs-btn-font-size: 1rem !important;
+    }
+}
