@@ -1,10 +1,9 @@
 <% layout('layouts/boilerplate') -%>
-    
     <form action="/places" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
-        <div class="container">
-            <div class="row">
-                <div class="col-5 offset-3 border border-secondary">
-                    <h1>New Food Place</h1>
+        <div class="container new-container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-10 col-lg-6 p-5 new-col">
+                    <h1 class="new-h1 text-center">New Food Place</h1>
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
                         <input type="text" class="form-control" name="place[title]" id="title" required/>
@@ -21,7 +20,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <textarea type="text" class="form-control" name="place[description]" id="description" required></textarea>
+                        <textarea type="text" class="form-control" name="place[description]" id="description" maxlength="60" required></textarea>
                         <div class="valid-feedback">
                             Perfect!
                         </div>
@@ -35,13 +34,12 @@
                     </div>
                     <div class="mb-3">
                         <div class="form-file custom-file">
-                            <input type="file" class="form-file-input" id="image" name="image" multiple>
-                            <label class="form-file-label" for="image">
-                            <span class="form-file-text custom-file-label"></span>
-                            </label>
+                            <input type="file" class="form-control" id="image" name="image" multiple>
                         </div>
                     </div>
-                    <button class="btn btn-success my-2">Add Food Place</button>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary btn-lg new-btn">Add Food Place</button>
+                    </div>
                 </div>
             </div>
         </div>

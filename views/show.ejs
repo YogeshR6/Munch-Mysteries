@@ -1,14 +1,20 @@
 <% layout('layouts/boilerplate') -%>
-<div class="row border p-3 border-secondary">
-  <div class="col-6">
-    <div class="card">
+<div class="row border p-3 border-secondary d-flex justify-content-center">
+  <div class="col-12 col-lg-6 mb-2">
+    <div class="card show-card">
       <div id="carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
+          <% if(!place.images[0]){%>
+            <div class="carousel-item active">
+              <img src="https://res.cloudinary.com/dhchj8s3k/image/upload/v1707416050/Munch-Mysteries/mfeuakzjdezybuqbieu1.jpg" class="d-block w-100" alt="">
+            </div>
+          <% }else{%>
             <% place.images.forEach((img, i) => {  %>
             <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
                 <img src="<%= img.url%>" class="d-block w-100" alt="">
             </div>
             <% }) %>
+          <% } %>
 
         </div>
         <% if(place.images.length > 1) {%>
@@ -21,29 +27,29 @@
             <span class="visually-hidden">Next</span>
           </button>
         <% } %>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title"><%= place.title %></h5>
-          <p class="card-text">Average Price: <%= place.averagePrice %></p>
-          <p class="card-text">Description: <%= place.description %></p>
-          <p class="card-text">Submitted by: <%= place.author.username %></p>
-          <p class="card-text">Location: <%= place.location %></p>
-          <% if( currentUser && place.author.equals(currentUser._id)) {%>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= place.title %></h5>
+        <p class="card-text">Average Price: <%= place.averagePrice %></p>
+        <p class="card-text">Description: <%= place.description %></p>
+        <p class="card-text">Submitted by: <%= place.author.username %></p>
+        <p class="card-text">Location: <%= place.location %></p>
+        <% if( currentUser && place.author.equals(currentUser._id)) {%>
           <a href="/places/<%= place._id %>/edit" class="btn btn-info my-1">Edit</a>
           <form action="/places/<%= place._id %>?_method=DELETE" method="POST">
             <button class="btn btn-danger my-1">Delete</button>
-          <% } %>
           </form>
-        </div>
+        <% } %>
+      </div>
     </div>
   </div>
-  <div class="col-6">
+  <div class="col-12 col-lg-6 p-2 mb-2 show-col">
     <% if(currentUser) {%>
-      <h1>Leave a Review</h1>
+      <h1 class="show-h1 text-center">Leave a Review</h1>
     <form action="/places/<%= place._id %>/reviews" method="POST" class="needs-validation" novalidate>
       <div class="mb-3">
         <fieldset class="starability-basic">
-          <legend>Rating:</legend>
+          <legend class="show-label">Rating:</legend>
           <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
           <input type="radio" id="first-rate1" name="review[rating]" value="1" />
           <label for="first-rate1" title="Terrible">1 star</label>
@@ -58,17 +64,20 @@
         </fieldset>       
       </div>
       <div class="mb-3">
-        <label for="body" class="form-label">Review:</label>
+        <label for="body" class="form-label show-label">Review:</label>
         <textarea type="text" class="form-control" name="review[body]" id="body" required></textarea>
         <div class="valid-feedback">
           Perfect!
         </div>
       </div>
-      <button class="btn btn-success mb-2">Submit Review</button>
+      <div class="d-grid gap-2 col-4 mx-auto">
+        <button class="btn btn-success mb-2">Submit Review</button>
+      </div>
     </form>  
     <% } %>
+    <hr>
     <div class="m-3">
-      <h2>Reviews</h2>
+      <h2 class="show-h1 text-center">Reviews</h2>
       <% place.reviews.forEach(function(review) { %>
         <div class="card m-2">
           <div class="card-body">

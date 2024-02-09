@@ -1,21 +1,22 @@
 <% layout('layouts/boilerplate') -%>
 <h1 class="index-h1 text-center">Munch Mysteries</h1>
-<div class="row">
+<div class="row d-flex justify-content-center">
   <% for(let place of places) {%>
-    <div class="col-12">
-      <div class="card index-card mb-3">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img class="img-fluid" alt="" src="<%=place.images[0].url%>">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title"><%= place.title %></h5>
-              <p class="card-txt mb-2">Average Price: <%= place.averagePrice %></p>
-              <p class="card-txt mb-2">Description: <%= place.description %></p>
-              <p class="card-txt mb-2">Location: <%= place.location %></p>
-              <a href="/places/<%= place._id %>" class="btn btn-primary mt-4">View</a>
-            </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="card m-1 index-card">
+        <img 
+        <% if(!place.images[0]){%>
+          src="https://res.cloudinary.com/dhchj8s3k/image/upload/v1707416050/Munch-Mysteries/mfeuakzjdezybuqbieu1.jpg"
+        <%} else {%>
+        src="<%=place.images[0].url%>"
+        <% } %> class="card-img-top" alt="Place Image">
+        <div class="card-body">
+          <h5 class="card-title"><%= place.title %></h5>
+          <p class="card-txt mb-2">Average Price: <%= place.averagePrice %></p>
+          <p class="card-txt mb-2">Description: <%= place.description %></p>
+          <p class="card-txt mb-2">Location: <%= place.location %></p>
+          <div class="d-grid gap-2">
+            <a href="/places/<%= place._id %>" class="btn btn-light mt-4">View Place</a>
           </div>
         </div>
       </div>

@@ -65,3 +65,55 @@ body{
         --bs-btn-font-size: 1rem !important;
     }
 }
+
+.new-col{
+    color: #ffffff;
+    background-color: #2a3b5a;
+    border-radius: 20%;
+    font-size: large;
+}
+
+.new-h1{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .new-col{
+        font-size: small;
+        padding: 3% !important;
+        border-radius: 5%;
+    }
+    .new-h1{
+        font-size: 1.5rem;
+    }
+    .new-btn{
+        --bs-btn-font-size: 1rem !important;
+    }
+}
+
+.valid-feedback{
+    color: #ffffff;
+}
+
+.show-card{
+    color: #ffffff;
+    background-color: #2a3b5a;
+}
+
+.show-col{
+    color: #ffffff;
+    background-color: #2a3b5a;
+    border-radius: 1%;
+}
+
+.show-h1{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.show-label{
+    font-size: 1.5rem;
+}
